@@ -1,8 +1,7 @@
 import React from 'react';
 import ProductCard from '../ProductCard/ProductCard';
 import { useParams } from 'react-router-dom';
-const ProductList = ({ data = [], action, btnText, cart = [] }) => {
-	console.log('prduclist');
+const ProductList = ({ data = [], addToCart, cart = [] }) => {
 	const { query } = useParams();
 	data = query ? data.filter(p => p.category === query) : data;
 	return (
@@ -18,8 +17,8 @@ const ProductList = ({ data = [], action, btnText, cart = [] }) => {
 						isGrouped={isGrouped}
 						img={img}
 						category={category}
-						action={action}
-						btnText={btnText}
+						addToCart={addToCart}
+						btnText={'Add to cart'}
 						existOnCart={existOnCart}
 					/>
 				);

@@ -1,10 +1,8 @@
-import { useState, useEffect } from 'react';
 import GrupedSpan from '../GrupedSpan/GrupedSpan';
-import { Button, Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import BtnChecked from './../BtnChecked/BtnChecked';
-const ProductCard = ({ id, name, price, isGrouped, img, category, action, btnText, existOnCart = false }) => {
+const ProductCard = ({ id, name, price, isGrouped, img, category, addToCart, existOnCart = false }) => {
 	const prod = { id, name, price, isGrouped, img, category };
-
 	return (
 		<li className='col d-flex justify-content-center mb-3'>
 			<Card style={{ width: '18rem' }}>
@@ -27,9 +25,9 @@ const ProductCard = ({ id, name, price, isGrouped, img, category, action, btnTex
 								variant='primary'
 								className='col w-auto'
 								onClick={() => {
-									action(prod);
+									addToCart(prod);
 								}}>
-								{btnText}
+								Add To Cart
 							</Button>
 						)}
 					</div>

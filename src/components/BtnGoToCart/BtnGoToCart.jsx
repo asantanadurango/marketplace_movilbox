@@ -1,6 +1,5 @@
-// import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-export default function BtnCart() {
+const BtnGoToCart = () => {
 	return (
 		<div className='position-fixed bottom-0 end-0 m-3'>
 			<Link to={'/cart'} className='btn btn-primary'>
@@ -8,4 +7,6 @@ export default function BtnCart() {
 			</Link>
 		</div>
 	);
-}
+};
+
+export default BtnGoToCart;

@@ -5,16 +5,15 @@ import initialCalled from './Helpers/initialCalled.js';
 import Spinner from './components/Spinner/Spinner.jsx';
 import NavBar from './components/NavBar/NavBar.jsx';
 import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
-import BtnCart from './components/BtnCart/BtnCart.jsx';
+import BtnGoToCart from './components/BtnGoToCart/BtnGoToCart.jsx';
 function App() {
 	const [data, setData] = useState([]);
 	const [cart, setCart] = useState([]);
 	const categorys = [...new Set(data.map(p => p.category))];
 	const cartPath = useLocation().pathname;
-	let showBtnCart = cart.length > 0 && cartPath !== '/cart';
+	let showBtnGoToCart = cart.length > 0 && cartPath !== '/cart';
 
 	const handleAddToCart = prod => (cart.length === 0 ? setCart([prod]) : cart.every(e => e.id !== prod.id) && setCart([...cart, prod]));
-
 	const handleDeleteToCart = prod => setCart(cart.filter(e => e.id !== prod.id));
 
 	useEffect(() => {
@@ -31,17 +30,19 @@ function App() {
 						data.length === 0 ? (
 							<Spinner animation={'border'} color={'light'} />
 						) : (
-							<CategoryHome data={data} action={handleAddToCart} cart={cart} />
+							<CategoryHome data={data} cart={cart} addToCart={handleAddToCart} />
 						)
 					}
 				/>
-				<Route path={`/:query`} element={<CategoryHome data={data} action={handleAddToCart} cart={cart} />} />
+				<Route path={`/:query`} element={<CategoryHome data={data} cart={cart} addToCart={handleAddToCart} />} />
 				<Route
 					path={`/cart`}
-					element={cart.length > 0 ? <CartHome data={cart} action={handleDeleteToCart} /> : <Navigate to='/' />}
+					element={
+						cart.length > 0 ? <CartHome data={cart} removeItemToCart={handleDeleteToCart} /> : <Navigate to='/' />
+					}
 				/>
 			</Routes>
-			{showBtnCart && <BtnCart />}
+			{showBtnGoToCart && <BtnGoToCart />}
 		</>
 	);
 }

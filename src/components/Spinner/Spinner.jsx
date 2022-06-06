@@ -1,6 +1,5 @@
 import React from 'react';
 import { Spinner as SpinnerBoostrap, Button, Container } from 'react-bootstrap';
-
 const Spinner = ({ animation = 'grow', color = 'primary' }) => {
 	return (
 		<Container style={{ paddingTop: '40vh', display: 'flex', justifyContent: 'center' }}>

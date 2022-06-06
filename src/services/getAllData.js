@@ -25,7 +25,7 @@ const DATA = [
 	},
 	{
 		id: 4,
-		name: 'computador',
+		name: 'computador ultimate pro R-5',
 		price: 40,
 		isGrouped: true,
 		img: 'https://images.pexels.com/photos/8052612/pexels-photo-8052612.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -98,9 +98,9 @@ const DATA = [
 ];
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 const getAllData = async () => {
-	// const res = await fetch('http://loquesea.com');
+	// const res = await fetch('http://my_api.com');
 	// const data = await res.json();
-	await delay(1000);
+	await delay(500);
 	return DATA;
 };
 
